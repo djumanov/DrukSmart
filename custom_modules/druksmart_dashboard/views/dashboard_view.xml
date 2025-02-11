@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- Form View -->
+        <record id="view_druksmart_dashboard_form" model="ir.ui.view">
+            <field name="name">druksmart.dashboard.form</field>
+            <field name="model">druksmart.dashboard</field>
+            <field name="arch" type="xml">
+                <form string="DrukSmart Dashboard">
+                    <sheet>
+                        <group>
+                            <field name="total_sales" readonly="1"/>
+                            <field name="total_revenue" readonly="1"/>
+                            <field name="total_expenses" readonly="1"/>
+                            <field name="total_employees" readonly="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Kanban View -->
+        <record id="view_druksmart_dashboard_kanban" model="ir.ui.view">
+            <field name="name">druksmart.dashboard.kanban</field>
+            <field name="model">druksmart.dashboard</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="id"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_kanban_record_title">Total Sales: <field name="total_sales"/></div>
+                                <div>Total Revenue: <field name="total_revenue"/></div>
+                                <div>Total Expenses: <field name="total_expenses"/></div>
+                                <div>Total Employees: <field name="total_employees"/></div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Action to Open the Dashboard -->
+        <record id="action_druksmart_dashboard" model="ir.actions.act_window">
+            <field name="name">DrukSmart Dashboard</field>
+            <field name="res_model">druksmart.dashboard</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="help" type="html">
+                <p>
+                    Welcome to DrukSmart Dashboard! This is where you can track your sales, revenue, and financial metrics.
+                </p>
+            </field>
+        </record>
+
+        <!-- Menu Item -->
+        <menuitem name="DrukSmart" id="druksmart_dashboard.menu_root"/>
+        <menuitem id="menu_druksmart_dashboard" name="DrukSmart Dashboard" parent="druksmart_dashboard.menu_root" action="action_druksmart_dashboard"/>
+
+    </data>
+</odoo>
