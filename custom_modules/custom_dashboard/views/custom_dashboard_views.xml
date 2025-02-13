@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Custom Dashboard View -->
+    <record id="view_custom_dashboard" model="ir.ui.view">
+        <field name="name">custom.dashboard.view</field>
+        <field name="model">custom.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Custom Dashboard">
+                <sheet>
+                    <!-- Header Section -->
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h1>Custom Dashboard</h1>
+                        </div>
+                    </div>
+
+                    <!-- Sales Section -->
+                    <div class="row mt-4">
+                        <div class="col-md-4 text-center">
+                            <h2>
+                                <field name="sales_order_count" widget="statinfo" string="Sales Order"/>
+                            </h2>
+                            <span>SALES ORDER</span>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <h2>
+                                <field name="sales" widget="monetary" options="{'currency_field': 'currency_id'}" string="Sales"/>
+                            </h2>
+                            <span>SALES</span>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <h2>
+                                <field name="sales_target" widget="monetary" options="{'currency_field': 'currency_id'}" string="Sales Target"/>
+                            </h2>
+                            <span>SALES TARGET - Fixed (Year)</span>
+                        </div>
+                    </div>
+
+                    <!-- Target Achievement Section -->
+                    <div class="row mt-4">
+                        <div class="col-md-12 text-center">
+                            <h2>
+                                <field name="target_achievement" widget="percentage" string="Target Achievement"/>
+                            </h2>
+                            <span>TARGET ACHIEVEMENT</span>
+                        </div>
+                    </div>
+
+                    <!-- Revenue and Cost Section -->
+                    <div class="row mt-4">
+                        <div class="col-md-6 text-center">
+                            <h2>
+                                <field name="revenue_income" widget="monetary" options="{'currency_field': 'currency_id'}" string="Revenue Income"/>
+                            </h2>
+                            <span>REVENUE INCOME</span>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <h2>
+                                <field name="cost_of_revenue" widget="monetary" options="{'currency_field': 'currency_id'}" string="Cost of Revenue"/>
+                            </h2>
+                            <span>COST OF REVENUE</span>
+                        </div>
+                    </div>
+
+                    <!-- Gross Profit Section -->
+                    <div class="row mt-4">
+                        <div class="col-md-6 text-center">
+                            <h2>
+                                <field name="gross_profit" widget="monetary" options="{'currency_field': 'currency_id'}" string="Gross Profit"/>
+                            </h2>
+                            <span>GROSS PROFIT</span>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <h2>
+                                <field name="gross_profit_margin" widget="percentage" string="Gross Profit Margin"/>
+                            </h2>
+                            <span>GROSS PROFIT MARGIN (%)</span>
+                        </div>
+                    </div>
+
+                    <!-- Expenses and Net Profit Section -->
+                    <div class="row mt-4">
+                        <div class="col-md-6 text-center">
+                            <h2>
+                                <field name="expenses" widget="monetary" options="{'currency_field': 'currency_id'}" string="Expenses"/>
+                            </h2>
+                            <span>EXPENSES</span>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <h2>
+                                <field name="net_profit" widget="monetary" options="{'currency_field': 'currency_id'}" string="Net Profit"/>
+                            </h2>
+                            <span>NET PROFIT</span>
+                        </div>
+                    </div>
+
+                    <!-- Net Profit Margin Section -->
+                    <div class="row mt-4">
+                        <div class="col-md-12 text-center">
+                            <h2>
+                                <field name="net_profit_margin" widget="percentage" string="Net Profit Margin"/>
+                            </h2>
+                            <span>NET PROFIT MARGIN (%)</span>
+                        </div>
+                    </div>
+
+                    <!-- Account Receivable and Payable Section -->
+                    <div class="row mt-4">
+                        <div class="col-md-6 text-center">
+                            <h2>
+                                <field name="account_receivable" widget="monetary" options="{'currency_field': 'currency_id'}" string="Account Receivable"/>
+                            </h2>
+                            <span>ACCOUNT RECEIVABLE</span>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <h2>
+                                <field name="account_payable" widget="monetary" options="{'currency_field': 'currency_id'}" string="Account Payable"/>
+                            </h2>
+                            <span>ACCOUNT PAYABLE</span>
+                        </div>
+                    </div>
+
+                    <!-- Total Employee Section -->
+                    <div class="row mt-4">
+                        <div class="col-md-12 text-center">
+                            <h2>
+                                <field name="total_employee" widget="statinfo" string="Total Employee"/>
+                            </h2>
+                            <span>TOTAL EMPLOYEE</span>
+                        </div>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action to Open the Custom Dashboard -->
+    <record id="action_custom_dashboard" model="ir.actions.act_window">
+        <field name="name">Custom Dashboard</field>
+        <field name="res_model">custom.dashboard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_custom_dashboard"/>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Root Menu Item for the Custom Dashboard -->
+    <menuitem id="menu_custom_dashboard_root" name="Custom Dashboard" action="action_custom_dashboard" sequence="10"/>
+</odoo>
